@@ -1,17 +1,24 @@
-这是一个配色方案生成工具。可以根据用户提供的原色生成一套符合莫兰迪配色规律的配色方案，从而提升高端感。
+这是一个配色方案生成工具。可以根据用户提供的原色生成一套符合莫兰迪配色规律的PPT配色方案，从而提升高端感。
+
+## 安装
+
+通过pip安装
+```bash
+pip install moranti
+```
 
 ## 用法
 
 1. 输入命令
 ```bash
-moranti #FF6900 -o design.html
+moranti "#FF6900" -o design.html
 ```
 输出两段html标签
 第一段是色彩的示例，色值仅用于参考，实际要根据原色值按照配色规则生成
 ```html
 <div class="color-group" style=" display: flex;flex-direction: column;gap: 8px;">
 	<div class="color-card" style="background: #f8f9fa;border-radius: 8px;padding: 12px;">
-		<div class="color-title" style="font-weight: 600;margin-bottom: 8px;font-size: 16px;">小米-莫兰迪色系</div>
+		<div class="color-title" style="font-weight: 600;margin-bottom: 8px;font-size: 16px;">#FF6900对应配色方案 </div>
 		
 		<div class="color-swatch" style="background:#F3E0D1;height: 40px;border-radius: 4px;display: flex;align-items: center;justify-content: center;font-size: 12px;color: #4a4a4a;margin: 4px 0;">
 			#F3E0D1
@@ -28,7 +35,6 @@ moranti #FF6900 -o design.html
 		<div class="color-swatch" style="background:#E5DED7;height: 40px;border-radius: 4px;display: flex;align-items: center;justify-content: center;font-size: 12px;color: #4a4a4a;margin: 4px 0;">
 			#E5DED7
 		</div>
-		<div class="color-scene">适用：商务演示/产品画册</div>
 	</div>
 	<div class="color-card" style="background: #f8f9fa;border-radius: 8px;padding: 12px;">
 		<div class="color-title" style="font-weight: 600;margin-bottom: 8px;font-size: 16px;">小米Logo辅助色</div>
@@ -65,7 +71,7 @@ moranti #FF6900 -o design.html
 ### 莫兰迪配色规则总表
 | **角色**   | **明度范围 (L*)**          | **饱和度范围** | **对比度要求**                 | **视觉感受** | **适用场景**    | **示例颜色**                   | **色差要求 (ΔE)** |
 | ---------- | -------------------------- | -------------- | ------------------------------ | ------------ | --------------- | ------------------------------ | ----------------- |
-| **背景色** | 75%-85%                    | 20%-30%        | 与主色：ΔL=10-20 (2.0:1-3.0:1) | 轻盈、通透   | 大面积墙面/基底 | `#F5F3EF`（奶油白）            | ≤15               |
+| **背景色** | 85%-92%                    | 20%-30%        | 与主色：ΔL=10-20 (2.0:1-3.0:1) | 轻盈、通透   | 大面积墙面/基底 | `#F5F3EF`（奶油白）            | ≤15               |
 | **主色**   | 65%-75%                    | 30%-40%        | 与点缀：ΔL=10-15 (3.0:1-4.0:1) | 沉稳、柔和   | 主家具/功能主体 | `#A8C7E0`（雾灰蓝）            | 20-30             |
 | **点缀色** | 55%-65%                    | 40%-50%        | 与背景：ΔL≥25 (≥4.5:1)         | 聚焦、层次感 | 小物件/强调元素 | `#D4A596`（陶土粉）            | ≥35               |
 | **文本色** | 深：20%-40%<br>浅：80%-95% | 0%-20%         | 与背景：ΔL≥35 (≥4.5:1)         | 清晰、无干扰 | 信息传达        | 深：`#4A4A4A`<br>浅：`#F5F5F5` | -                 |
@@ -76,7 +82,7 @@ moranti #FF6900 -o design.html
 1. **明度阶梯系统**  
    ```mermaid
    graph LR
-     A[背景 80%] --> B[主色 70%] 
+     A[背景 88%] --> B[主色 70%] 
      B --> C[点缀 60%] 
      C --> D[深文本 30%]
    ```
@@ -121,7 +127,7 @@ moranti #FF6900 -o design.html
 ### 违规修正速查表
 | **问题现象**     | **根本原因**     | **修正方案**             |
 | ---------------- | ---------------- | ------------------------ |
-| 主色淹没在背景中 | 背景-主色ΔL<10   | 主色明度-5%，饱和度+8%   |
+| 主色淹没在背景中 | 背景-主色ΔL<5    | 主色明度-5%，饱和度+8%   |
 | 点缀色突兀       | 主色-点缀ΔE>40   | 点缀添加15%背景色调和    |
 | 文本阅读吃力     | 文本-背景ΔL<35   | 文本改用#333或#EEE       |
 | 色彩沉闷缺乏层次 | 全角色饱和度<25% | 点缀饱和度+15%，主色+10% |
